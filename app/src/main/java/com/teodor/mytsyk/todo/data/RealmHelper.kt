@@ -9,6 +9,12 @@ import io.realm.Realm
 open class RealmHelper : IRealmHelper{
     var realm: Realm? = null
 
+    private object Holder { val INSTANCE = RealmHelper() }
+
+    companion object {
+        val instance: RealmHelper by lazy { Holder.INSTANCE }
+    }
+
     override fun storeTaskToDataBase(task: TaskModel) {
         realm = Realm.getDefaultInstance()
         try {
@@ -17,6 +23,15 @@ open class RealmHelper : IRealmHelper{
             realm?.commitTransaction()
         } finally {
           realm?.close()
+        }
+    }
+
+    override fun getTaskListFromDataBase(): List<TaskModel>? {
+        realm = Realm.getDefaultInstance()
+        try {
+            return realm?.where(TaskModel::class.java)?.findAll()
+        } finally {
+            realm?.close()
         }
     }
 

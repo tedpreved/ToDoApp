@@ -7,6 +7,7 @@ import com.teodor.mytsyk.todo.data.model.TaskModel
  */
 interface IRealmHelper {
     fun storeTaskToDataBase(task: TaskModel)
+    fun getTaskListFromDataBase() : List<TaskModel>?
     fun getTaskFromDataBase(taskId: String) : TaskModel?
     fun updateTask(task: TaskModel)
     fun removeTaskFromDataBase(taskId: String)
