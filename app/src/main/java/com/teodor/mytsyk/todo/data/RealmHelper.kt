@@ -6,10 +6,12 @@ import io.realm.Realm
 /**
  * Created by Monstr on 12.03.2017.
  */
-open class RealmHelper : IRealmHelper{
+open class RealmHelper : IRealmHelper {
     var realm: Realm? = null
 
-    private object Holder { val INSTANCE = RealmHelper() }
+    private object Holder {
+        val INSTANCE = RealmHelper()
+    }
 
     companion object {
         val instance: RealmHelper by lazy { Holder.INSTANCE }
@@ -22,7 +24,7 @@ open class RealmHelper : IRealmHelper{
             realm?.copyToRealm(task)
             realm?.commitTransaction()
         } finally {
-          realm?.close()
+            realm?.close()
         }
     }
 
@@ -31,7 +33,7 @@ open class RealmHelper : IRealmHelper{
         try {
             return realm?.where(TaskModel::class.java)?.findAll()
         } finally {
-            realm?.close()
+            //realm?.close()
         }
     }
 

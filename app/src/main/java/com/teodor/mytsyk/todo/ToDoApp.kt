@@ -11,5 +11,13 @@ class ToDoApp : Application(){
     override fun onCreate() {
         super.onCreate()
         Realm.init(this)
+        /* RealmHelper.instance
+                 .storeTaskToDataBase(TaskModel(UUID.randomUUID().toString(),"first", "fucking description",0, Date()))
+
+         RealmHelper.instance
+                 .storeTaskToDataBase(TaskModel(UUID.randomUUID().toString(),"second", "fucking description",0, Date()))
+
+         RealmHelper.instance
+                 .storeTaskToDataBase(TaskModel(UUID.randomUUID().toString(),"first", "fucking description",0, Date()))*/
     }
 }

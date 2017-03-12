@@ -3,7 +3,7 @@ package com.teodor.mytsyk.todo.ui.mvp.home
 /**
  * Created by Monstr on 12.03.2017.
  */
-class HomePresenter : HomeContract.Presenter{
+class HomePresenter : HomeContract.Presenter {
     var view: HomeContract.View? = null
     var model: HomeContract.Model? = null
 
@@ -15,5 +15,9 @@ class HomePresenter : HomeContract.Presenter{
     override fun onDestroy() {
         this.view = null
         this.view = null
+    }
+
+    override fun fillAdapter() {
+        view?.setDataForAdapter(model!!.getTaskList())
     }
 }
